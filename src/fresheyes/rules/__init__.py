@@ -10,6 +10,7 @@ from .debug_mode import debug_mode
 from .eval_exec import eval_exec
 from .hardcoded_secret import hardcoded_secret
 from .insecure_deserialization import insecure_deserialization
+from .insecure_random import insecure_random
 from .jwt_no_verify import jwt_no_verify
 from .sql_injection import sql_injection
 from .tls_no_verify import tls_no_verify
@@ -25,6 +26,7 @@ ALL_RULES: tuple[Rule, ...] = (
     command_injection,
     insecure_deserialization,
     tls_no_verify,
+    insecure_random,
     weak_crypto,
     debug_mode,
     cors_wildcard,
