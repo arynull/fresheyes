@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check src/
+
+  install-and-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Clean install from source
+        run: |
+          python -m venv /tmp/ci-venv
+          /tmp/ci-venv/bin/pip install --quiet .
+          /tmp/ci-venv/bin/fresheyes --version
+      - name: CLI smoke test (scan finds risky code)
+        run: |
+          F=/tmp/ci-venv/bin/fresheyes
+          mkdir -p /tmp/vuln
+          printf 'import subprocess\nsubprocess.call("ls -la", shell=True)\n' > /tmp/vuln/bad.py
+          # exit 1 means findings at/above the failure threshold: expected here
+          $F scan /tmp/vuln --format json > /tmp/scan.json || test $? -eq 1
+          python3 -c "import json; d=json.load(open('/tmp/scan.json')); assert d['summary']['total'] > 0, 'expected findings'"
+          # a clean file must pass with exit 0
+          printf 'x = 1\n' > /tmp/vuln/ok.py
+          $F scan /tmp/vuln/ok.py --format json > /dev/null
+          echo "smoke OK"
