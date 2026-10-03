@@ -13,6 +13,7 @@ from .insecure_deserialization import insecure_deserialization
 from .insecure_random import insecure_random
 from .jwt_no_verify import jwt_no_verify
 from .sql_injection import sql_injection
+from .template_injection import template_injection
 from .tls_no_verify import tls_no_verify
 from .weak_crypto import weak_crypto
 
@@ -26,6 +27,7 @@ ALL_RULES: tuple[Rule, ...] = (
     command_injection,
     insecure_deserialization,
     tls_no_verify,
+    template_injection,
     insecure_random,
     weak_crypto,
     debug_mode,

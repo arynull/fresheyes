@@ -101,6 +101,7 @@ Print the installed version.
 | `command-injection` | high | `shell=True`, `os.system`, `popen` with a shell on dynamic input |
 | `insecure-deserialization` | high | `pickle.loads`, `yaml.load` without `SafeLoader`, `marshal` on untrusted data |
 | `tls-no-verify` | high | `verify=False`, unverified SSL contexts |
+| `template-injection` | high | `render_template_string` / Django `Template` / Nunjucks `renderString` built from user input |
 | `insecure-random` | medium | `random` / `Math.random()` used to mint a token, password, salt, or session id instead of `secrets` |
 | `weak-crypto` | medium | MD5/SHA1 used for passwords, DES/3DES, ECB mode, hardcoded IVs |
 | `debug-mode` | medium | Flask `debug=True`, Django `DEBUG = True` left on |
