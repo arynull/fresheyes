@@ -103,6 +103,7 @@ Print the installed version.
 | `tls-no-verify` | high | `verify=False`, unverified SSL contexts |
 | `template-injection` | high | `render_template_string` / Django `Template` / Nunjucks `renderString` built from user input |
 | `insecure-random` | medium | `random` / `Math.random()` used to mint a token, password, salt, or session id instead of `secrets` |
+| `log-injection` | medium | Untrusted input written to a log message (log forging via newlines) |
 | `weak-crypto` | medium | MD5/SHA1 used for passwords, DES/3DES, ECB mode, hardcoded IVs |
 | `debug-mode` | medium | Flask `debug=True`, Django `DEBUG = True` left on |
 | `cors-wildcard` | medium | `Access-Control-Allow-Origin: *` together with credentials |

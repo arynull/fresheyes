@@ -12,6 +12,7 @@ from .hardcoded_secret import hardcoded_secret
 from .insecure_deserialization import insecure_deserialization
 from .insecure_random import insecure_random
 from .jwt_no_verify import jwt_no_verify
+from .log_injection import log_injection
 from .sql_injection import sql_injection
 from .template_injection import template_injection
 from .tls_no_verify import tls_no_verify
@@ -29,6 +30,7 @@ ALL_RULES: tuple[Rule, ...] = (
     tls_no_verify,
     template_injection,
     insecure_random,
+    log_injection,
     weak_crypto,
     debug_mode,
     cors_wildcard,
