@@ -102,6 +102,7 @@ Print the installed version.
 | `insecure-deserialization` | high | `pickle.loads`, `yaml.load` without `SafeLoader`, `marshal` on untrusted data |
 | `tls-no-verify` | high | `verify=False`, unverified SSL contexts |
 | `template-injection` | high | `render_template_string` / Django `Template` / Nunjucks `renderString` built from user input |
+| `client-side-secret` | medium | `NEXT_PUBLIC_*` / `VITE_*` / `REACT_APP_*` env var with a credential-ish name read into browser code |
 | `insecure-random` | medium | `random` / `Math.random()` used to mint a token, password, salt, or session id instead of `secrets` |
 | `log-injection` | medium | Untrusted input written to a log message (log forging via newlines) |
 | `weak-crypto` | medium | MD5/SHA1 used for passwords, DES/3DES, ECB mode, hardcoded IVs |

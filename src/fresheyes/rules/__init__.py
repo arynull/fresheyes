@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from ..findings import Severity
 from .base import Rule
+from .client_side_secret import client_side_secret
 from .command_injection import command_injection
 from .cors_wildcard import cors_wildcard
 from .debug_mode import debug_mode
@@ -29,6 +30,7 @@ ALL_RULES: tuple[Rule, ...] = (
     insecure_deserialization,
     tls_no_verify,
     template_injection,
+    client_side_secret,
     insecure_random,
     log_injection,
     weak_crypto,
