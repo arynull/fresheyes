@@ -99,6 +99,7 @@ Print the installed version.
 | `jwt-no-verify` | critical | `jwt.decode` without signature verification, `algorithms=["none"]` |
 | `sql-injection` | high | f-strings, `%` formatting or `+` concatenation flowing into `execute()` / raw SQL calls |
 | `command-injection` | high | `shell=True`, `os.system`, `popen` with a shell on dynamic input |
+| `path-traversal` | high | `open()` / `fs.readFileSync` reading a path built from untrusted input (`../` escape) |
 | `insecure-deserialization` | high | `pickle.loads`, `yaml.load` without `SafeLoader`, `marshal` on untrusted data |
 | `tls-no-verify` | high | `verify=False`, unverified SSL contexts |
 | `template-injection` | high | `render_template_string` / Django `Template` / Nunjucks `renderString` built from user input |

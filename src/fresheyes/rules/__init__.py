@@ -14,6 +14,7 @@ from .insecure_deserialization import insecure_deserialization
 from .insecure_random import insecure_random
 from .jwt_no_verify import jwt_no_verify
 from .log_injection import log_injection
+from .path_traversal import path_traversal
 from .sql_injection import sql_injection
 from .template_injection import template_injection
 from .tls_no_verify import tls_no_verify
@@ -27,6 +28,7 @@ ALL_RULES: tuple[Rule, ...] = (
     jwt_no_verify,
     sql_injection,
     command_injection,
+    path_traversal,
     insecure_deserialization,
     tls_no_verify,
     template_injection,
